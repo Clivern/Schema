@@ -30,6 +30,36 @@
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+
+if( ! defined('SCHEMA_CORE_ROOT_FILE') ){
+	define('SCHEMA_CORE_ROOT_FILE', __FILE__);
+}
+
+if( ! defined('SCHEMA_CORE_ROOT_DIR') ){
+	define('SCHEMA_CORE_ROOT_DIR', dirname(__FILE__));
+}
+
+include_once SCHEMA_CORE_ROOT_DIR . '/loader.php';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 if ( ! class_exists( 'Schema_WP' ) ) :
 
 /**
@@ -177,70 +207,70 @@ final class Schema_WP {
 	 * @return void
 	 */
 	private function includes() {
-		
+
 		global $schema_wp_options;
-		
+
 		require_once SCHEMAWP_PLUGIN_DIR . 'includes/admin/settings/register-settings.php';
 		$schema_wp_options = schema_wp_get_settings();
-		
+
 		require_once SCHEMAWP_PLUGIN_DIR . 'includes/class-capabilities.php';
-		
+
 		require_once SCHEMAWP_PLUGIN_DIR . 'includes/admin/post-type/schema-post-type.php';
 		require_once SCHEMAWP_PLUGIN_DIR . 'includes/admin/post-type/schema-wp-submit.php';
 		require_once SCHEMAWP_PLUGIN_DIR . 'includes/admin/post-type/schema-wp-ajax.php';
-		
+
 		require_once SCHEMAWP_PLUGIN_DIR . 'includes/admin/admin-functions.php';
 		require_once SCHEMAWP_PLUGIN_DIR . 'includes/admin/ref.php';
-		
+
 		if( is_admin() ) {
-		
+
 			require_once SCHEMAWP_PLUGIN_DIR . 'includes/admin/meta/class-meta.php';
 			require_once SCHEMAWP_PLUGIN_DIR . 'includes/admin/meta-tax/class-meta-tax.php';
 			require_once SCHEMAWP_PLUGIN_DIR . 'includes/admin/meta.php';
 			require_once SCHEMAWP_PLUGIN_DIR . 'includes/admin/meta-tax.php';
 			require_once SCHEMAWP_PLUGIN_DIR . 'includes/admin/meta-exclude.php';
-			
+
 			require_once SCHEMAWP_PLUGIN_DIR . 'includes/admin/settings/display-settings.php';
 			require_once SCHEMAWP_PLUGIN_DIR . 'includes/admin/settings/contextual-help.php';
-			
+
 			require_once SCHEMAWP_PLUGIN_DIR . 'includes/admin/admin-pages.php';
 			require_once SCHEMAWP_PLUGIN_DIR . 'includes/admin/scripts.php';
 			require_once SCHEMAWP_PLUGIN_DIR . 'includes/admin/class-menu.php';
 			require_once SCHEMAWP_PLUGIN_DIR . 'includes/admin/class-notices.php';
 			require_once SCHEMAWP_PLUGIN_DIR . 'includes/admin/class-welcome.php';
 			require_once SCHEMAWP_PLUGIN_DIR . 'includes/admin/class-feedback.php';
-			
+
 		}
 
 		require_once SCHEMAWP_PLUGIN_DIR . 'includes/misc-functions.php';
 		require_once SCHEMAWP_PLUGIN_DIR . 'includes/scripts.php';
-		
+
 		// Misc
 		require_once SCHEMAWP_PLUGIN_DIR . 'includes/misc/auto_featured_img.php';
-		
+
 		require_once SCHEMAWP_PLUGIN_DIR . 'includes/json/knowledge-graph.php';
 		require_once SCHEMAWP_PLUGIN_DIR . 'includes/json/search-results.php';
 		require_once SCHEMAWP_PLUGIN_DIR . 'includes/json/blog.php';
 		require_once SCHEMAWP_PLUGIN_DIR . 'includes/json/category.php';
 		require_once SCHEMAWP_PLUGIN_DIR . 'includes/json/author.php';
-		
+
 		require_once SCHEMAWP_PLUGIN_DIR . 'includes/json/schema-output.php';
-		
+
 		require_once SCHEMAWP_PLUGIN_DIR . 'includes/admin/admin-bar-menu.php';
 		require_once SCHEMAWP_PLUGIN_DIR . 'includes/admin/updater/class-license-handler.php';
-		
+
 		// Plugin Integrations
 		require_once SCHEMAWP_PLUGIN_DIR . 'includes/integrations/yoast-seo.php';
 		require_once SCHEMAWP_PLUGIN_DIR . 'includes/integrations/amp.php';
 		require_once SCHEMAWP_PLUGIN_DIR . 'includes/integrations/wp-rich-snippets.php';
 		require_once SCHEMAWP_PLUGIN_DIR . 'includes/integrations/seo-framework.php';
 		require_once SCHEMAWP_PLUGIN_DIR . 'includes/integrations/visual-composer.php';
-		
+
 		// Theme Integrations
 		require_once SCHEMAWP_PLUGIN_DIR . 'includes/integrations/genesis.php';
 		require_once SCHEMAWP_PLUGIN_DIR . 'includes/integrations/thesis.php';
 		require_once SCHEMAWP_PLUGIN_DIR . 'includes/integrations/divi.php';
-		
+
 		// Core Extensions
 		require_once SCHEMAWP_PLUGIN_DIR . 'includes/extensions/post-meta-generator.php';
 		require_once SCHEMAWP_PLUGIN_DIR . 'includes/extensions/author.php';
@@ -250,7 +280,7 @@ final class Schema_WP {
 		require_once SCHEMAWP_PLUGIN_DIR . 'includes/extensions/audio-object.php';
 		require_once SCHEMAWP_PLUGIN_DIR . 'includes/extensions/sameAs.php';
 		require_once SCHEMAWP_PLUGIN_DIR . 'includes/extensions/comment.php';
-		
+
 		require_once SCHEMAWP_PLUGIN_DIR . 'includes/install.php';
 	}
 
@@ -266,7 +296,7 @@ final class Schema_WP {
 		//self::$instance->settings       = new Schema_WP_Settings;
 	}
 
-	
+
 	/**
 	 * Loads the plugin language files
 	 *
